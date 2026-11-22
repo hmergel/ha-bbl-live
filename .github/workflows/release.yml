@@ -1,0 +1,34 @@
+# Wird ausgelöst, wenn auf GitHub ein Release veröffentlicht wird (z. B. Tag v1.0.1).
+# Setzt die Version in manifest.json auf die Release-Version und hängt
+# bbl_live.zip an das Release an. HACS installiert genau diese ZIP-Datei.
+name: Release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Version in manifest.json setzen
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          jq --arg v "$VERSION" '.version = $v' custom_components/bbl_live/manifest.json > manifest.tmp
+          mv manifest.tmp custom_components/bbl_live/manifest.json
+          cat custom_components/bbl_live/manifest.json
+
+      - name: ZIP erstellen
+        run: |
+          cd custom_components/bbl_live
+          zip -r "$GITHUB_WORKSPACE/bbl_live.zip" . -x "__pycache__/*"
+
+      - name: ZIP an das Release anhängen
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload "$GITHUB_REF_NAME" bbl_live.zip --clobber

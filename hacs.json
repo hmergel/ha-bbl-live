@@ -1,0 +1,7 @@
+﻿{
+  "name": "BBL Live (Basketball Bundesliga)",
+  "render_readme": true,
+  "homeassistant": "2025.3.0",
+  "zip_release": true,
+  "filename": "bbl_live.zip"
+}

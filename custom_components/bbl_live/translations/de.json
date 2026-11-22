@@ -1,0 +1,43 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Lieblingsmannschaft wählen",
+        "description": "Wähle die BBL-Mannschaft, deren Spiele angezeigt werden sollen.",
+        "data": {
+          "team_id": "Mannschaft"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "easycredit-bbl.de ist nicht erreichbar oder liefert keine Daten."
+    },
+    "abort": {
+      "already_configured": "Diese Mannschaft ist bereits eingerichtet."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "game_status": {
+        "name": "Spielstatus",
+        "state": {
+          "kein_spiel": "Kein Spiel",
+          "vor_spiel": "Vor dem Spiel",
+          "live": "Live",
+          "beendet": "Beendet",
+          "verschoben": "Verschoben",
+          "abgesagt": "Abgesagt"
+        }
+      },
+      "live_score": { "name": "Live-Punktestand" },
+      "last_result": { "name": "Letztes Ergebnis" },
+      "next_game": { "name": "Nächstes Spiel" },
+      "next_opponent": { "name": "Nächster Gegner" },
+      "next_venue": { "name": "Nächster Spielort" },
+      "table_rank": { "name": "Tabellenplatz" }
+    },
+    "binary_sensor": {
+      "game_running": { "name": "Spiel läuft" }
+    }
+  }
+}

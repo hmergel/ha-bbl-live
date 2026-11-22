@@ -1,0 +1,13 @@
+{
+  "domain": "bbl_live",
+  "name": "BBL Live (Basketball Bundesliga)",
+  "codeowners": ["@hmergel"],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/hmergel/ha-bbl-live",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/hmergel/ha-bbl-live/issues",
+  "requirements": [],
+  "version": "1.0.0"
+}
