@@ -26,11 +26,6 @@ Benötigt Home Assistant 2025.3 oder neuer.
 
 Sobald es eine neue Version gibt, zeigt Home Assistant unter **Einstellungen → Updates** ein Update an.
 
-## Neue Version veröffentlichen (für Entwickler)
-1. Änderungen committen und pushen.
-2. Ein Release erstellen, zum Beispiel `gh release create v1.0.1 --generate-notes`.
-3. Die GitHub Action setzt die Version automatisch in `manifest.json` und hängt `bbl_live.zip` an das Release an. HACS meldet das Update dann allen Installationen.
-
 ## Entitäten
 
 Beispiel für ALBA BERLIN. Die Entitäts-IDs leiten sich aus dem Mannschaftsnamen ab.
