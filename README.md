@@ -1,5 +1,7 @@
 # BBL Live – Basketball Bundesliga für Home Assistant
 
+<a href="https://buymeacoffee.com/hmergel" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="50"></a>
+
 Eigene Integration (Custom Component) für Home Assistant. Sie zeigt für deine Lieblingsmannschaft der easyCredit BBL Folgendes an:
 
 - **Letztes Ergebnis** mit Gegner, Sieg/Niederlage und Viertel-Ergebnissen
@@ -92,3 +94,8 @@ automation:
 - Die Integration liest die Daten, die die BBL-Website in ihre Seiten einbettet. Wenn die BBL ihre Website umbaut, kann eine Anpassung nötig werden. Die Integration meldet dann `UpdateFailed` im Log.
 - Wie schnell der Live-Punktestand aktualisiert wird, hängt davon ab, wie oft die BBL-Website ihre Seiten aktualisiert.
 - Die Rohwerte `status_roh` und `fortschritt_roh` stehen als Attribute zur Verfügung. Damit lässt sich prüfen, welche Statuswerte die BBL während eines Spiels liefert.
+
+## Unterstützung
+Wenn dir die Integration gefällt, freue ich mich über einen Kaffee ☕
+
+<a href="https://buymeacoffee.com/hmergel" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="50"></a>
