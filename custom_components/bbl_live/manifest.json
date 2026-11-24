@@ -1,7 +1,12 @@
 {
   "domain": "bbl_live",
   "name": "BBL Live (Basketball Bundesliga)",
-  "codeowners": ["@hmergel"],
+  "categories": [
+    "news_social_media"
+  ],
+  "codeowners": [
+    "@hmergel"
+  ],
   "config_flow": true,
   "dependencies": [],
   "documentation": "https://github.com/hmergel/ha-bbl-live",

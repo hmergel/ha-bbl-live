@@ -38,7 +38,10 @@ _HEADERS = {
 }
 
 _FINAL_STATUSES = {"OFFICIAL", "FINAL", "FINISHED", "ENDED", "POST", "COMPLETE"}
-_SCHEDULED_STATUSES = {"PRE", "SCHEDULED", "NOT_STARTED", ""}
+# Explizite "noch nicht begonnen"-Status der BBL (z. B. "PRE" kurz vor Spielbeginn)
+_PRE_STATUSES = {"PRE", "PREGAME", "PRE_GAME", "SCHEDULED", "NOT_STARTED"}
+# gameProgress-Werte, die noch keinen Spielbeginn bedeuten
+_PRE_PROGRESS = {"", "0", "PRE", "PREGAME", "PRE_GAME", "SCHEDULED", "NOT_STARTED"}
 _POSTPONED_STATUSES = {"POSTPONED", "DELAYED"}
 _CANCELLED_STATUSES = {"CANCELLED", "CANCELED", "ABANDONED"}
 
@@ -176,16 +179,21 @@ def _build_quarters(result: dict[str, Any]) -> list[dict[str, Any]]:
 
 
 def _determine_state(status: str, progress: str | None, has_score: bool) -> str:
-    status = status.upper()
-    progress_u = (progress or "").upper()
+    status = status.strip().upper()
+    progress_u = str(progress or "").strip().upper()
     if status in _FINAL_STATUSES or progress_u == "E":
         return STATE_FINISHED
     if status in _CANCELLED_STATUSES:
         return STATE_CANCELLED
     if status in _POSTPONED_STATUSES:
         return STATE_POSTPONED
-    if status in _SCHEDULED_STATUSES and not progress_u and not has_score:
-        return STATE_SCHEDULED
+    if not has_score:
+        # Bei explizitem Vor-Spiel-Status (z. B. "PRE") ist das Spiel noch nicht
+        # gestartet, auch wenn gameProgress bereits einen Wert liefert.
+        if status in _PRE_STATUSES:
+            return STATE_SCHEDULED
+        if not status and progress_u in _PRE_PROGRESS:
+            return STATE_SCHEDULED
     # Alles andere (z. B. LIVE, IN_PROGRESS, gameProgress "Q2") gilt als laufend
     return STATE_LIVE
 
